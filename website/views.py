@@ -49,12 +49,10 @@ def logout_user(request):
 
 
 def register_user(request):
-    
 	if request.method == 'POST':
 		form = SignUpForm(request.POST)
 		if form.is_valid():
 			form.save()
-   
 			# Authenticate and login
 			username = form.cleaned_data['username']
 			password = form.cleaned_data['password1']
@@ -66,4 +64,5 @@ def register_user(request):
 		form = SignUpForm()
 		return render(request, 'register.html', {'form':form})
 
+	return render(request, 'register.html', {'form':form})
 
