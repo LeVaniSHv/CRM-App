@@ -8,8 +8,6 @@
 
 
 
-{%if 2 == 2 %}
-
 
 <form method="POST" action={%url 'register' %}>
 	{% csrf_token %}
@@ -35,7 +33,6 @@
 
 </div>
 
-{%endif%}
 
 
 {% endblock %}
