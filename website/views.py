@@ -95,4 +95,23 @@ def costumer_record(request, pk):
     else :
         
         messages.success(request, "You must be logged in ! ")
-        redirect('home')
+        return redirect('home')
+        
+        
+def delete_record(request, pk):
+    
+    if request.user.is_authenticated:
+        
+        delete_record = Record.objects.get(id=pk)
+    
+        delete_record.delete()
+    
+            
+        messages.success(request, "Record Has Been Deleted ")
+        return redirect('home')
+        
+    else :
+        
+        messages.success(request, "You must be logged in ! ")
+        return redirect('home')
+        

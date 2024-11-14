@@ -10,20 +10,39 @@
 <h1> Costumer Record :  </h1>
 
 
-{%if record%}
 
-Costumer ID  : {{record.id}}   <br>
-{{record.first_name}} {{record.last_name}} <br>
-{{record.phone}}<br>
-{{record.adress}}<br>
-{{record.city}}<br>
-{{record.state}}<br>
-{{record.zipcode}}<br>
-{{record.created_at}}<br>
+<div class="card">
+    <div class="card-header">
+      <strong>  {{record.first_name}} {{record.last_name}}  </strong>
+    </div>
+    <div class="card-body">
+      
+      <p class="card-text">
+      <strong>Phone:</strong> {{record.phone}}<br> </p>
+      <p class="card-text">
+      <strong>Adress:</strong> {{record.adress}}<br> </p>
+      <p class="card-text">
+      <strong>City:</strong> {{record.city}}<br> </p>
+      <p class="card-text"> 
+      <strong>State:</strong> {{record.state}}<br> </p>
+      <p class="card-text">
+      <strong>Zip:</strong>{{record.zipcode}}<br> </p>
+      <p class="card-text"> 
+      <strong>Created:</strong>{{record.created_at}}<br> </p>
 
 
-{%endif%}
+      </p>
+    </div>
+  </div>
 
+
+
+  <br> <br>
+
+  <a href = "{% url 'home' %}" class="btn btn-secondary"> Back </a>
+
+
+  <a href = "{% url 'delete' record.id %}" class="btn btn-danger">Delete</a>
 
 
 
