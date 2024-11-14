@@ -60,33 +60,38 @@ def logout_user(request):
 
 
 def register_user(request):
-	if request.method == 'POST':
-		form = SignUpForm(request.POST)
-        
-		if form.is_valid():
-			form.save()
-			# Authenticate and login
-			username = form.cleaned_data['username']
-			password = form.cleaned_data['password1']
+    
+    
+    if not request.user.is_authenticated:
+        if request.method == 'POST' :
+            form = SignUpForm(request.POST)
             
-        
-			user = authenticate(username=username, password=password)
-			login(request, user)
-			messages.success(request, "You Have Successfully Registered! Welcome!")
-			return redirect('home')
-	else:
-		form = SignUpForm()
-		return render(request, 'register.html', {'form':form})
+            if form.is_valid():
+                form.save()
+                # Authenticate and login
+                username = form.cleaned_data['username']
+                password = form.cleaned_data['password1']
+                
+            
+                user = authenticate(username=username, password=password)
+                login(request, user)
+                messages.success(request, "You Have Successfully Registered! Welcome!")
+                return redirect('home')
+        else:
+            form = SignUpForm()
+            return render(request, 'register.html', {'form':form})
 
 
-	return render(request, 'register.html', {'form':form})
-
+        return render(request, 'register.html', {'form':form})
+    else:
+        return redirect('home')
 
 
 def costumer_record(request, pk):
     
     
     if request.user.is_authenticated:
+        
         
         costumer_record = Record.objects.get(id=pk)
         
@@ -115,3 +120,8 @@ def delete_record(request, pk):
         messages.success(request, "You must be logged in ! ")
         return redirect('home')
         
+        
+
+def add_record(request):
+    
+    return render(request, 'add_record.html', {})

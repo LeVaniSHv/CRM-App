@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+
+
+
+
+
+{%block content%}
+
+
+<h1> Add Record :  </h1>
+
+
+<br><br>
+
+
+<form method="POST" action={%url 'register' %}>
+	{% csrf_token %}
+
+
+
+
+    <br/>
+    <button type="submit" class="btn btn-success">Add Record</button>
+  </form>
+
+{%endblock%}
