@@ -3,7 +3,7 @@ from django.contrib.auth import  login, logout, authenticate
 from django.contrib import messages
 from .forms import SignUpForm, AddRecordForm
 from .models import Record
-
+from django.shortcuts import get_object_or_404
 
 
 
@@ -107,7 +107,7 @@ def delete_record(request, pk):
     
     if request.user.is_authenticated:
         
-        delete_record = Record.objects.get(id=pk)
+        delete_record = get_object_or_404(Record, pk=pk)
     
         delete_record.delete()
     
