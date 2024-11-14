@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+
+
+
+
+{%block content%}
+
+
+
+<h1> Costumer Record :  </h1>
+
+
+{%if record%}
+
+Costumer ID  : {{record.id}}   <br>
+{{record.first_name}} {{record.last_name}} <br>
+{{record.phone}}<br>
+{{record.adress}}<br>
+{{record.city}}<br>
+{{record.state}}<br>
+{{record.zipcode}}<br>
+{{record.created_at}}<br>
+
+
+{%endif%}
+
+
+
+
+{%endblock%}
